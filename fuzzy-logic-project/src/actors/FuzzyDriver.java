@@ -6,9 +6,10 @@ import net.sourceforge.jFuzzyLogic.rule.Variable;
 
 public class FuzzyDriver {
     FIS fis;
+
     public FuzzyDriver() {
         String fileName = "fuzzy_plane.fcl";
-        FIS fis = FIS.load(fileName,false);
+         fis = FIS.load(fileName,false);
 
     }
     public void showCharts(){
@@ -22,12 +23,12 @@ public class FuzzyDriver {
 
 // zadaj wartosci wejsciowe
         fuzzyRuleSet.setVariable("front_sensor", frontSensor);
-        fuzzyRuleSet.setVariable("left_sensor", rightSensor);
-        fuzzyRuleSet.setVariable("right_sensor", leftSensor);
+        fuzzyRuleSet.setVariable("left_sensor", leftSensor);
+        fuzzyRuleSet.setVariable("right_sensor", rightSensor);
 // logika sterownika
         fuzzyRuleSet.evaluate();
-// graficzna prezentacja wyjscia
-        fuzzyRuleSet.getVariable("direction");
+
+//        System.out.println(fuzzyRuleSet.toString());
 
         return fuzzyRuleSet.getVariable("direction");
     }

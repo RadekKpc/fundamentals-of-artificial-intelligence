@@ -37,19 +37,19 @@ public class Plane extends Actor{
     }
     @Override
     public void nextStage(int speed,Scene scene){
-        System.out.println(scene.getLeftSensor(position, WIDTH, HEIGHT));
-        System.out.println(scene.getRightSensor(position, WIDTH, HEIGHT));
-        System.out.println(scene.getFrontSensor(position, WIDTH, HEIGHT));
-        System.out.println();
         double leftSensor = (double) scene.getLeftSensor(position, WIDTH, HEIGHT) /  scene.sceneWhiteFiled() * 100;
         double rightSensor = scene.getRightSensor(position, WIDTH, HEIGHT) / ( scene.sceneWhiteFiled()) * 100;
         double frontSensor = (double) scene.getFrontSensor(position, WIDTH, HEIGHT) / (scene.getWidth() - position.getX() - WIDTH) * 100;
 
-        System.out.println(leftSensor);
-        System.out.println(rightSensor);
-        System.out.println(frontSensor);
-//        Variable howToChange = fuzzyDriver.calculate(frontSensor,rightSensor,leftSensor);
-//        System.out.println(howToChange.getValue());
+        System.out.println("Mapped sensors values");
+        System.out.println("left sensor:" + leftSensor);
+        System.out.println("front sensor: " + frontSensor);
+        System.out.println("right snesor:" +rightSensor);
+        Variable howToChange = fuzzyDriver.calculate(frontSensor,rightSensor,leftSensor);
+
+        double calculatedMove = howToChange.getLatestDefuzzifiedValue()/50 * this.speed;
+        System.out.println(calculatedMove);
+        this.position.addToY((int) calculatedMove);
     }
 
     public static int getHEIGHT() {
