@@ -41,16 +41,20 @@ public class Scene extends JPanel implements ActionListener, MouseListener {
         g.fillRect(0, (int) (height - (frameHeight* height)), width, (int) (frameHeight* height));
 
     }
+    public double sceneWhiteFiled(){
+        return height - frameHeight*height - frameHeight*height;
+    }
 
     public int getLeftSensor(Position plane, int width, int height){
         return actors.stream()
                 .filter(f -> (f instanceof Obstacle))
-                .filter(f -> f.getPosition().getX() >= plane.getX() - ((Obstacle) f).WIDTH && f.getPosition().getX() <= plane.getX() + width  && f.getPosition().getY() <= plane.getY() && f.getPosition().getY() >= frameHeight*this.height - height)
+                .filter(f -> f.getPosition().getX() >= plane.getX() - ((Obstacle) f).WIDTH && f.getPosition().getX() <= plane.getX() + width  && f.getPosition().getY() + Obstacle.HEIGHT <= plane.getY() && f.getPosition().getY() >= frameHeight*this.height - height)
                 .mapToInt(f -> (-1) * f.getPosition().getY())
                 .sorted()
                 .map(f -> (-1)*f + Obstacle.HEIGHT)
+                .map(f -> plane.getY() - f)
                 .findFirst()
-                .orElse((int) (frameHeight* this.height));
+                .orElse(plane.getY() - (int) (frameHeight* this.height));
     }
     public int getRightSensor(Position plane, int width, int height){
         return actors.stream()
@@ -58,18 +62,18 @@ public class Scene extends JPanel implements ActionListener, MouseListener {
                 .filter(f -> f.getPosition().getX() >= plane.getX() - ((Obstacle) f).HEIGHT && f.getPosition().getX() <= plane.getX() + width  && f.getPosition().getY() >= plane.getY() + height && f.getPosition().getY() <= (int) (this.height - (frameHeight* this.height)))
                 .mapToInt(f -> f.getPosition().getY())
                 .sorted()
-                .map(f -> f + Obstacle.HEIGHT)
+                .map(f ->  f - (plane.getY() + height))
                 .findFirst()
-                .orElse((int) (this.height - (frameHeight* height)));
+                .orElse((int) ((this.height - (frameHeight* this.height)) - plane.getY() - height));
     }
     public int getFrontSensor(Position plane, int width, int height){
         return actors.stream()
                 .filter(f -> (f instanceof Obstacle))
-                .filter(f -> f.getPosition().getX() >= plane.getX() +width  && f.getPosition().getY() >= plane.getY()  && f.getPosition().getY() <= plane.getY() + ((Obstacle) f).HEIGHT)
+                .filter(f -> f.getPosition().getX() >= plane.getX() + width  && f.getPosition().getY() >= plane.getY() - ((Obstacle) f).HEIGHT  && f.getPosition().getY() - height <= plane.getY() )
                 .mapToInt(f -> f.getPosition().getX())
                 .sorted()
                 .findFirst()
-                .orElse( this.width);
+                .orElse( this.width) - (plane.getX() + width);
     }
 
     @Override
@@ -108,9 +112,9 @@ public class Scene extends JPanel implements ActionListener, MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         actors.add(new Obstacle(new Position(e.getX(),e.getY())));
-        System.out.println(e.getX());
-        System.out.println(e.getY());
     }
+
+
 
     @Override
     public void mousePressed(MouseEvent e) {

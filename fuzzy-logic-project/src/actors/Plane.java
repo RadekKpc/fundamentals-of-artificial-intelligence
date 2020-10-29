@@ -40,7 +40,16 @@ public class Plane extends Actor{
         System.out.println(scene.getLeftSensor(position, WIDTH, HEIGHT));
         System.out.println(scene.getRightSensor(position, WIDTH, HEIGHT));
         System.out.println(scene.getFrontSensor(position, WIDTH, HEIGHT));
-//        Variable howToChange = fuzzyDriver.calculate(position);
+        System.out.println();
+        double leftSensor = (double) scene.getLeftSensor(position, WIDTH, HEIGHT) /  scene.sceneWhiteFiled() * 100;
+        double rightSensor = scene.getRightSensor(position, WIDTH, HEIGHT) / ( scene.sceneWhiteFiled()) * 100;
+        double frontSensor = (double) scene.getFrontSensor(position, WIDTH, HEIGHT) / (scene.getWidth() - position.getX() - WIDTH) * 100;
+
+        System.out.println(leftSensor);
+        System.out.println(rightSensor);
+        System.out.println(frontSensor);
+//        Variable howToChange = fuzzyDriver.calculate(frontSensor,rightSensor,leftSensor);
+//        System.out.println(howToChange.getValue());
     }
 
     public static int getHEIGHT() {

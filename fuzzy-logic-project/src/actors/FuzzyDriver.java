@@ -16,8 +16,7 @@ public class FuzzyDriver {
         FuzzyRuleSet fuzzyRuleSet = fis.getFuzzyRuleSet();
         fuzzyRuleSet.chart();
     }
-    public Variable calculate(int frontSensor, int rightSensor, int leftSensor){
-
+    public Variable calculate(double frontSensor, double rightSensor, double leftSensor){
 
         FuzzyRuleSet fuzzyRuleSet = fis.getFuzzyRuleSet();
 

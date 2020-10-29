@@ -8,7 +8,7 @@ public class Application extends  Thread {
 
     public static void main(String[] args) throws InterruptedException {
         Scene scene = new Scene(800,800,0.3,1);
-        Timer timer = new Timer(30,scene);
+        Timer timer = new Timer(1000,scene);
 
         scene.addActor(new Plane(new Position(10,scene.getHeight()/2), 2));
 
