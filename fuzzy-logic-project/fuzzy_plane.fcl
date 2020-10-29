@@ -17,12 +17,12 @@ TERM far := (55, 0) (70, 0.50) (85, 1) (100, 1);
 END_FUZZIFY
 
 FUZZIFY left_sensor
-TERM near := (0, 1) (10, 1) (15, 0.50) (20, 0);
+TERM near := (0, 1) (100, 0.75);
 TERM far := (0, 0) (50, 0.50) (100, 1);
 END_FUZZIFY
 
 FUZZIFY right_sensor
-TERM near := (0, 1) (10, 1) (15, 0.50) (20, 0);
+TERM near := (0, 1) (100, 0.75);
 TERM far := (0, 0) (50, 0.50) (100, 1);
 END_FUZZIFY
 

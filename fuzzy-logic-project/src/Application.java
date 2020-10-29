@@ -10,7 +10,7 @@ public class Application extends  Thread {
         Scene scene = new Scene(800,800,0.3,1);
         Timer timer = new Timer(30,scene);
 
-        scene.addActor(new Plane(new Position(10,scene.getHeight()/2), 10));
+        scene.addActor(new Plane(new Position(10,scene.getHeight()/2), 20));
 
 
         JFrame frame = new JFrame("Fuzzy Logic Plane Simulation");
