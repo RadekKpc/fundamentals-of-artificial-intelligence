@@ -17,12 +17,12 @@ TERM far := (55, 0) (70, 0.50) (85, 1) (100, 1);
 END_FUZZIFY
 
 FUZZIFY left_sensor
-TERM near := (0, 1) (100, 0.75);
+TERM near := (0, 1) (100, 0.50);
 TERM far := (0, 0) (50, 0.50) (100, 1);
 END_FUZZIFY
 
 FUZZIFY right_sensor
-TERM near := (0, 1) (100, 0.75);
+TERM near := (0, 1) (100, 0.50);
 TERM far := (0, 0) (50, 0.50) (100, 1);
 END_FUZZIFY
 
@@ -38,7 +38,7 @@ RULEBLOCK first
 AND: MIN;
 ACT: MIN;
 
-RULE 0: IF front_sensor IS near AND left_sensor IS near AND right_sensor is near THEN direction IS forward;
+RULE 0: IF front_sensor IS near AND left_sensor IS near AND right_sensor is near THEN direction IS left;
 RULE 1: IF front_sensor IS near AND left_sensor IS near AND right_sensor is far THEN direction IS right;
 RULE 2: IF front_sensor IS near AND left_sensor IS far AND right_sensor is near THEN direction IS left;
 RULE 3: IF front_sensor IS near AND left_sensor IS far AND right_sensor is far THEN direction IS right;

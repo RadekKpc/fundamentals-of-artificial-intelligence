@@ -7,7 +7,7 @@ import javax.swing.*;
 public class Application extends  Thread {
 
     public static void main(String[] args) throws InterruptedException {
-        Scene scene = new Scene(800,800,0.3,1);
+        Scene scene = new Scene(800,800,0.3,5);
         Timer timer = new Timer(30,scene);
 
         scene.addActor(new Plane(new Position(10,scene.getHeight()/2), 20));
