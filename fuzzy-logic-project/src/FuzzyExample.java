@@ -3,8 +3,11 @@ import net.sourceforge.jFuzzyLogic.rule.FuzzyRuleSet;
 
 public class FuzzyExample {
 
+        public FuzzyExample(){
+
+        }
     public static void main(String[] args) throws Exception {
-            String fileName = "fuzzy_volume.fcl";
+            String fileName = "fuzzy_plane.fcl";
             FIS fis = FIS.load(fileName,false);
 
             int poziomNatezenia = 80;

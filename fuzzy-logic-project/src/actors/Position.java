@@ -26,6 +26,12 @@ public class Position {
         this.y = y;
     }
 
+    public void addToX(int inc){
+        this.x += inc;
+    }
+    public void addToY(int inc){
+        this.y += inc;
+    }
     @Override
     public String toString() {
         return "Position{" +

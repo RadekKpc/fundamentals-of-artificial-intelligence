@@ -15,4 +15,8 @@ public abstract class Actor implements Paintable {
     public Position getPosition() {
         return position;
     }
+    public void nextStage(int speed,Scene scene){
+
+    }
+
 }

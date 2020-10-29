@@ -14,6 +14,11 @@ public class Obstacle extends Actor{
     @Override
     public void paint(Graphics graphics) {
         graphics.setColor(Color.green);
-        graphics.fillRect(position.getY(),position.getY(),WIDTH,HEIGHT);
+        graphics.fillRect(position.getX(),position.getY(),WIDTH,HEIGHT);
+    }
+
+    @Override
+    public void nextStage(int speed,Scene scene){
+        position.addToX(-1*speed);
     }
 }
