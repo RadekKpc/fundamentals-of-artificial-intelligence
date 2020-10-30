@@ -39,7 +39,7 @@ public class Plane extends Actor{
     public void nextStage(int speed,Scene scene){
         double leftSensor = (double) scene.getLeftSensor(position, WIDTH, HEIGHT) /  scene.sceneWhiteFiled() * 100;
         double rightSensor = scene.getRightSensor(position, WIDTH, HEIGHT) / ( scene.sceneWhiteFiled()) * 100;
-        double frontSensor = (double) scene.getFrontSensor(position, WIDTH, HEIGHT) / (scene.getWidth() - position.getX() - WIDTH) * 100;
+        double frontSensor = (double) scene.getFrontSensor(position, WIDTH, HEIGHT) / (scene.getWidth() - position.getX()) * 100;
 
         System.out.println("Mapped sensors values");
         System.out.println("left sensor:" + leftSensor);

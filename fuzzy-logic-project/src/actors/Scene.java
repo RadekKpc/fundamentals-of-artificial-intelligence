@@ -69,11 +69,11 @@ public class Scene extends JPanel implements ActionListener, MouseListener {
     public int getFrontSensor(Position plane, int width, int height){
         return actors.stream()
                 .filter(f -> (f instanceof Obstacle))
-                .filter(f -> f.getPosition().getX() >= plane.getX() + width  && f.getPosition().getY() >= plane.getY() - ((Obstacle) f).HEIGHT  && f.getPosition().getY() - height <= plane.getY() )
+                .filter(f -> f.getPosition().getX() >= plane.getX() && f.getPosition().getY() >= plane.getY() - ((Obstacle) f).HEIGHT  && f.getPosition().getY() - height <= plane.getY() )
                 .mapToInt(f -> f.getPosition().getX())
                 .sorted()
                 .findFirst()
-                .orElse( this.width) - (plane.getX() + width);
+                .orElse( this.width) - (plane.getX());
     }
 
     @Override
